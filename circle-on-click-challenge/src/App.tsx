@@ -16,8 +16,8 @@ function App() {
   }
 
   const handleUndoCircle = () => {
-    const newPoints = points.pop();
-    setPoints([...points, points.pop()]);
+    const pointToRemove = points.pop();
+    setPoints(points.filter(point => point !== pointToRemove));
   }
 
   const handleRedoCircle = () => {}
