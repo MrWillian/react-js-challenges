@@ -1,3 +1,17 @@
+# React JS Challenge - List Synonymous from Word
+
+A React JS Challenge that requires a word to get your synonymous and list them, that when clicked, will listing now your synonymous too.
+To get the synonymous, we will use the Api Datamuse (https://api.datamuse.com/words?rel_syn={THE WORD TO SEARCH HERE}).
+
+# Demonstration
+
+[React App.webm](https://user-images.githubusercontent.com/50757994/202002721-2d4a1e8f-cb17-4a30-a77b-946afdddc3e2.webm)
+
+
+# Challenge Finished
+
+![react-js-challenge-2](https://user-images.githubusercontent.com/50757994/202002166-f357ebff-ada3-4514-bd70-5c00ddc3eacc.PNG)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
