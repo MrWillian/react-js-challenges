@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.App-form {}
+
+.App-form-input {
+  background-color: #282c34;
+  border: 1px solid #CCC;
+  height: 34px;
+  width: 300px;
+  font-size: 22px;
+  color: #fff;
+}
+
+.App-form-button {
+  height: 38px;
+  width: 100px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.App-list {}
+
+.App-list-item {
+  cursor: pointer;
+}
