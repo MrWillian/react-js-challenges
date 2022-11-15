@@ -8,7 +8,9 @@ function App() {
 
   const getSynonymous = () => {
     axios.get(`https://api.datamuse.com/words?rel_syn=${word}`)
-      .then(response => console.log('response', response.data))
+      .then(response => response.data)
+      .then(data => data.map((item: any) => item.word))
+      .then(item => setSynonymous(item))
       .catch(err => console.log('error', err));
   }
 
@@ -30,7 +32,9 @@ function App() {
           <button type="submit" className="App-form-button" onClick={(e) => handleSubmitFormAction(e)}>Enviar</button>
         </form>
         <ul className="App-list">
-          <li className="App-list-item">teste 1</li>
+          {synonymous ? synonymous.map((element: string, index: number) => 
+            <li className="App-list-item" key={index}>{element}</li>
+          ) : <></>}
         </ul>
       </header>
     </div>
