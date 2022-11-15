@@ -6,8 +6,8 @@ function App() {
   const [ word, setWord ] = useState<string>('');
   const [ synonymous, setSynonymous ] = useState<string[]>([]);
 
-  const getSynonymous = () => {
-    axios.get(`https://api.datamuse.com/words?rel_syn=${word}`)
+  const getSynonymous = (wordToSearch: string) => {
+    axios.get(`https://api.datamuse.com/words?rel_syn=${wordToSearch}`)
       .then(response => response.data)
       .then(data => data.map((item: any) => item.word))
       .then(item => setSynonymous(item))
@@ -16,7 +16,12 @@ function App() {
 
   const handleSubmitFormAction = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    getSynonymous();
+    getSynonymous(word);
+  }
+
+  const handleListItemClickAction = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, word: string) => {
+    setWord(word);
+    getSynonymous(word);
   }
 
   return (
@@ -32,9 +37,9 @@ function App() {
           <button type="submit" className="App-form-button" onClick={(e) => handleSubmitFormAction(e)}>Enviar</button>
         </form>
         <ul className="App-list">
-          {synonymous ? synonymous.map((element: string, index: number) => 
-            <li className="App-list-item" key={index}>{element}</li>
-          ) : <></>}
+          {synonymous.length > 0 ? synonymous.map((element: string, index: number) => 
+            <li className="App-list-item" key={index} onClick={(e => handleListItemClickAction(e, element))}>{element}</li>
+          ) : <>Nenhuma correspondência...</>}
         </ul>
       </header>
     </div>
