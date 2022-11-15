@@ -19,9 +19,9 @@ function App() {
     getSynonymous(word);
   }
 
-  const handleListItemClickAction = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, word: string) => {
-    setWord(word);
-    getSynonymous(word);
+  const handleListItemClickAction = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, element: string) => {
+    setWord(element);
+    getSynonymous(element);
   }
 
   return (
