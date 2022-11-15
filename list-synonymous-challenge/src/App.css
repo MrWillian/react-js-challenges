@@ -38,8 +38,6 @@
   }
 }
 
-.App-form {}
-
 .App-form-input {
   background-color: #282c34;
   border: 1px solid #CCC;
@@ -55,8 +53,6 @@
   font-size: 22px;
   font-weight: bold;
 }
-
-.App-list {}
 
 .App-list-item {
   cursor: pointer;
