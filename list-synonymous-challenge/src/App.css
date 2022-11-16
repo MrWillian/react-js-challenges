@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 0.5em 0.5em;
 }
 
 .App-link {
@@ -36,8 +37,6 @@
     transform: rotate(360deg);
   }
 }
-
-.App-form {}
 
 .App-form-input {
   background-color: #282c34;
@@ -55,8 +54,7 @@
   font-weight: bold;
 }
 
-.App-list {}
-
 .App-list-item {
   cursor: pointer;
+  font-size: 18px;
 }
