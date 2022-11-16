@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [grid, setGrid] = useState([
+    [0, 1],
+    [0, 1]
+  ]);
+
+  const [revealGrid, setRevealGrid] = useState([
+    [false, false],
+    [false, false]
+  ])
+
+  const handleCardClick = (rowIndex: number, columnIndex: number) => {
+    let auxiliarRevealGrid = [...revealGrid];
+    auxiliarRevealGrid[rowIndex][columnIndex] = !auxiliarRevealGrid[rowIndex][columnIndex];
+    setRevealGrid(auxiliarRevealGrid);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {grid.length > 0 ? grid.map((row, rowIndex) => 
+        <div className="row">
+          {row.map((column, columnIndex) =>
+            <div 
+              className={"card" + (revealGrid[rowIndex][columnIndex] ? " active" : "")} 
+              onClick={() => handleCardClick(rowIndex, columnIndex)}>
+              {revealGrid[rowIndex][columnIndex] ? column : " "}
+            </div>
+          )}
+        </div>
+      ) : <></>}
     </div>
   );
 }
