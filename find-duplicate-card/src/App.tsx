@@ -21,9 +21,10 @@ function App() {
   return (
     <div className="App">
       {grid.length > 0 ? grid.map((row, rowIndex) => 
-        <div className="row">
+        <div className="row" key={rowIndex}>
           {row.map((column, columnIndex) =>
             <div 
+              key={columnIndex}
               className={"card" + (revealGrid[rowIndex][columnIndex] ? " active" : "")} 
               onClick={() => handleCardClick(rowIndex, columnIndex)}>
               {revealGrid[rowIndex][columnIndex] ? column : " "}
