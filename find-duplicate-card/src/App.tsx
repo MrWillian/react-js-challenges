@@ -10,12 +10,29 @@ function App() {
   const [revealGrid, setRevealGrid] = useState([
     [false, false],
     [false, false]
-  ])
+  ]);
+
+  const [selectedCards, setSelectedCards] = useState<Array<number | null>>([]);
 
   const handleCardClick = (rowIndex: number, columnIndex: number) => {
     let auxiliarRevealGrid = [...revealGrid];
-    auxiliarRevealGrid[rowIndex][columnIndex] = !auxiliarRevealGrid[rowIndex][columnIndex];
+    let auxiliarSelectedCards = [...selectedCards];
+    let hitTheTarget = false;
+
+    auxiliarRevealGrid[rowIndex][columnIndex] = true;
     setRevealGrid(auxiliarRevealGrid);
+
+
+    console.log('entrou', auxiliarSelectedCards);
+
+    if (auxiliarSelectedCards.length > 1 && auxiliarSelectedCards[0] === auxiliarSelectedCards[1]) {
+      hitTheTarget = true;
+      console.log('entrou');
+    }
+
+    if (hitTheTarget) alert("Bem no alvo!!! :D");
+    setSelectedCards([...selectedCards, grid[rowIndex][columnIndex]]);
+
   }
 
   return (
