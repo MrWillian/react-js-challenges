@@ -19,15 +19,22 @@ function App() {
     let hitTheTarget = false;
 
     auxiliarRevealGrid[rowIndex][columnIndex] = true;
-    setRevealGrid(auxiliarRevealGrid);
     setSelectedCards([...selectedCards, grid[rowIndex][columnIndex]]);
 
-    if (selectedCards[0] === grid[rowIndex][columnIndex]) hitTheTarget = true;
-    
     setTimeout(() => {
+      if (selectedCards[0] === grid[rowIndex][columnIndex]) {
+        hitTheTarget = true;
+      } else if (selectedCards.length > 0) {
+        auxiliarRevealGrid[rowIndex][columnIndex] = false;
+      }
+
+      setRevealGrid(auxiliarRevealGrid);
+
       if (hitTheTarget) {
         alert("Bem no alvo!!! :D");
         setSelectedCards([]);
+      } else if (selectedCards.length > 0) {
+        alert("Errou! :(");
       }
     }, 250);
   }
