@@ -2,39 +2,39 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [grid, setGrid] = useState([
-    [0, 1],
-    [0, 1]
-  ]);
-
-  const [revealGrid, setRevealGrid] = useState([
-    [false, false],
-    [false, false]
-  ]);
-
-  const [selectedCards, setSelectedCards] = useState<Array<number | null>>([]);
+  const [grid, setGrid] = useState([[0, 1],[0, 1]]);
+  const [revealGrid, setRevealGrid] = useState([[false, false], [false, false]]);
+  const [firstCardSelected, setFirstCardSelected] = useState<Map<number, number[]>>(new Map());
 
   const handleCardClick = (rowIndex: number, columnIndex: number) => {
     let auxiliarRevealGrid = [...revealGrid];
     let hitTheTarget = false;
+    let auxiliarMap = new Map();
 
     auxiliarRevealGrid[rowIndex][columnIndex] = true;
-    setSelectedCards([...selectedCards, grid[rowIndex][columnIndex]]);
+    auxiliarMap.set(grid[rowIndex][columnIndex], [rowIndex, columnIndex]);
+
+    setFirstCardSelected(auxiliarMap);
 
     setTimeout(() => {
-      if (selectedCards[0] === grid[rowIndex][columnIndex]) {
+      if (firstCardSelected.has(grid[rowIndex][columnIndex])) {
         hitTheTarget = true;
-      } else if (selectedCards.length > 0) {
+      } else if (firstCardSelected.size > 0) {
         auxiliarRevealGrid[rowIndex][columnIndex] = false;
+        for (var value of firstCardSelected.values()) {
+          const entries = Object.entries(value).map(entry => Object.assign(entry, { 0: +entry[0] }));
+          auxiliarRevealGrid[entries[0][1]][entries[1][1]] = false;
+        }
       }
 
       setRevealGrid(auxiliarRevealGrid);
 
       if (hitTheTarget) {
         alert("Bem no alvo!!! :D");
-        setSelectedCards([]);
-      } else if (selectedCards.length > 0) {
+        setFirstCardSelected(new Map());
+      } else if (firstCardSelected.size > 0) {
         alert("Errou! :(");
+        setFirstCardSelected(new Map());
       }
     }, 250);
   }
