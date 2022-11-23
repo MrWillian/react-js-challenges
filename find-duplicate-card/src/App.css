@@ -18,8 +18,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75px;
-  height: 100px;
+  width: 125px;
+  height: 150px;
   background-color: #FFF;
   margin: 5px;
   color: #000;
@@ -27,8 +27,6 @@
   -webkit-box-shadow: 6px 3px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 3px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 6px 3px 5px 0px rgba(0,0,0,0.75);
-}
 
-/* .active {
-  transform: rotateY(180deg);
-} */
+  font-size: 42px;
+}
