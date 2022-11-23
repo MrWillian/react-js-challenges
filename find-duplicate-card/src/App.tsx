@@ -17,13 +17,14 @@ function App() {
   const generateAleatoryGrid = () => {
     let row: any[] = [];
     let numbersToSelect = [1, 1, 2, 2, 3, 3];
+    let emojisToCards = ['👼🏻', '🎄', '🎅🏼'];
     let selectedNumber, aleatoryIndex;
     for (let i = 0; i < 2; i++) {
       row[i] = [];
       for (let j = 0; j < 3; j++) {
         aleatoryIndex = (Math.random() * numbersToSelect.length | 0);
         selectedNumber = numbersToSelect[aleatoryIndex];
-        row[i][j] = selectedNumber;
+        row[i][j] = emojisToCards[selectedNumber - 1];
         numbersToSelect.splice(aleatoryIndex, 1);
       }
     }
