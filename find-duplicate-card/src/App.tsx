@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [grid, setGrid] = useState([[0, 1], [0, 1]]);
-  const [revealGrid, setRevealGrid] = useState([[false, false], [false, false]]);
+  const [grid, setGrid] = useState([[0, 1, 2], [0, 1, 2]]);
+  const [revealGrid, setRevealGrid] = useState([[false, false, false], [false, false, false]]);
   const [firstCardSelected, setFirstCardSelected] = useState<Map<number, number[]>>(new Map());
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function App() {
   const checkIfIsWinner = () => {
     let winner = !(revealGrid.some(item => item.some(element => element === false)));
     if (winner) {
-      alert("Parabéns, você venceu o jogo!!! :D");
+      alert("Parabéns, você venceu o jogo!!! :D\nEle será reiniciado...");
       setRevealGrid([[false, false], [false, false]]);
     }
   }
