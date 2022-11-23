@@ -2,19 +2,40 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [grid, setGrid] = useState([[0, 1, 2], [0, 1, 2]]);
+  const [grid, setGrid] = useState([[], []]);
   const [revealGrid, setRevealGrid] = useState([[false, false, false], [false, false, false]]);
   const [firstCardSelected, setFirstCardSelected] = useState<Map<number, number[]>>(new Map());
+
+  useEffect(() => {
+    generateAleatoryGrid();
+  }, []);
 
   useEffect(() => {
     checkIfIsWinner();
   }, [revealGrid]);
 
+  const generateAleatoryGrid = () => {
+    let row: any[] = [];
+    let numbersToSelect = [1, 1, 2, 2, 3, 3];
+    let selectedNumber, aleatoryIndex;
+    for (let i = 0; i < 2; i++) {
+      row[i] = [];
+      for (let j = 0; j < 3; j++) {
+        aleatoryIndex = (Math.random() * numbersToSelect.length | 0);
+        selectedNumber = numbersToSelect[aleatoryIndex];
+        row[i][j] = selectedNumber;
+        numbersToSelect.splice(aleatoryIndex, 1);
+      }
+    }
+    setGrid(row);
+  }
+
   const checkIfIsWinner = () => {
     let winner = !(revealGrid.some(item => item.some(element => element === false)));
     if (winner) {
       alert("Parabéns, você venceu o jogo!!! :D\nEle será reiniciado...");
-      setRevealGrid([[false, false], [false, false]]);
+      generateAleatoryGrid();
+      setRevealGrid([[false, false, false], [false, false, false]]);
     }
   }
 
