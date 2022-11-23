@@ -62,11 +62,7 @@ function App() {
 
       setRevealGrid(auxiliarRevealGrid);
 
-      if (hitTheTarget) {
-        alert("Bem no alvo!!! :D");
-        setFirstCardSelected(new Map());
-      } else if (firstCardSelected.size > 0) {
-        alert("Errou! :(");
+      if (hitTheTarget || firstCardSelected.size > 0) {
         setFirstCardSelected(new Map());
       }
     }, 200);
