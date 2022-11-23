@@ -14,11 +14,9 @@ function App() {
     let winner = !(revealGrid.some(item => item.some(element => element === false)));
     if (winner) {
       alert("Parabéns, você venceu o jogo!!! :D");
-      resetGame();
+      setRevealGrid([[false, false], [false, false]]);
     }
   }
-
-  const resetGame = () => setRevealGrid([[false, false], [false, false]]);
 
   const handleCardClick = (rowIndex: number, columnIndex: number) => {
     let auxiliarRevealGrid = [...revealGrid];
