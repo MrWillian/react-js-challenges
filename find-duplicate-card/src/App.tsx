@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [grid, setGrid] = useState([[0, 1],[0, 1]]);
+  const [grid, setGrid] = useState([[0, 1], [0, 1]]);
   const [revealGrid, setRevealGrid] = useState([[false, false], [false, false]]);
   const [firstCardSelected, setFirstCardSelected] = useState<Map<number, number[]>>(new Map());
+
+  useEffect(() => {
+    checkIfIsWinner();
+  }, [revealGrid]);
+
+  const checkIfIsWinner = () => {
+    let winner = !(revealGrid.some(item => item.some(element => element === false)));
+    if (winner) {
+      alert("Parabéns, você venceu o jogo!!! :D");
+      resetGame();
+    }
+  }
+
+  const resetGame = () => setRevealGrid([[false, false], [false, false]]);
 
   const handleCardClick = (rowIndex: number, columnIndex: number) => {
     let auxiliarRevealGrid = [...revealGrid];
@@ -36,7 +50,7 @@ function App() {
         alert("Errou! :(");
         setFirstCardSelected(new Map());
       }
-    }, 250);
+    }, 200);
   }
 
   return (
