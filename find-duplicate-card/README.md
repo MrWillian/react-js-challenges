@@ -1,3 +1,20 @@
+# React JS Challenge - Find Duplicate Card Game
+
+A React JS Challenge that require the development of a game to find the duplicates cards that are hidden, the game ends when all 3 pairs are found.
+
+# Demonstration
+
+[Find Duplicate React JS Challenge.webm](https://user-images.githubusercontent.com/50757994/203832513-a4c48de1-0251-4c0c-83f6-4cec347736aa.webm)
+
+PS: The alert with Winner Message does not appearing on the video, but is showing on the print below.
+
+# Challenge Finished
+
+![find-duplicate-card-game](https://user-images.githubusercontent.com/50757994/203831051-62eddfe4-f697-4aa6-87f8-28928b98f073.PNG)
+
+![find-duplicate-card-game-winner-message](https://user-images.githubusercontent.com/50757994/203833047-133fd46c-53de-46e7-a6ca-fabb81295302.PNG)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
