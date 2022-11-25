@@ -5,15 +5,13 @@ import { useQuery } from 'react-query';
 
 function App() {
   const [ word, setWord ] = useState<string>('');
-  const { data, refetch } = useQuery(["synonymous"], () => getSynonymous(), { 
+  const { data, refetch, isLoading } = useQuery(["synonymous"], () => getSynonymous(), { 
     refetchOnWindowFocus: false,
     enabled: false
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      refetch();
-    }, 500);
+    refetch();
   }, [word]);
 
   const getSynonymous = async () => {
@@ -39,6 +37,7 @@ function App() {
           />
           <button type="submit" className="App-form-button" onClick={(e) => handleSubmitFormAction(e)}>Enviar</button>
         </form>
+        {isLoading ?? 'Loading...'}
         <ul className="App-list">
           {data?.length > 0 ? data?.map((element: string, index: number) => 
             <li className="App-list-item" key={index} onClick={(e => handleListItemClickAction(e, element))}>{element}</li>
