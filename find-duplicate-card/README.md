@@ -2,6 +2,8 @@
 
 A React JS Challenge that require the development of a game to find the duplicates cards that are hidden, the game ends when all 3 pairs are found.
 
+Deploy: https://find-duplicate-card.vercel.app/
+
 # Demonstration
 
 [Find Duplicate React JS Challenge.webm](https://user-images.githubusercontent.com/50757994/203832513-a4c48de1-0251-4c0c-83f6-4cec347736aa.webm)
